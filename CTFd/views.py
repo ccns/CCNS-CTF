@@ -45,6 +45,7 @@ from CTFd.utils.security.signing import (
     SignatureExpired,
     BadSignature,
 )
+from CTFd.utils.scores import get_standings
 from sqlalchemy.exc import IntegrityError
 import os
 
@@ -133,7 +134,8 @@ def setup():
 
             # Index page
 
-            index = """<div class="row">
+            index = """
+<div class="row">
     <div class="col-md-6 offset-md-3">
         <img class="w-100 mx-auto d-block" style="max-width: 500px;padding: 50px;padding-top: 14vh;" src="themes/core/static/img/logo.png" />
         <h3 class="text-center">
@@ -283,8 +285,14 @@ def static_html(route):
     if page is None:
         abort(404)
     else:
-        if page.auth_required and authed() is False:
-            return redirect(url_for("auth.login", next=request.full_path))
+        if route == 'index':
+            try:
+                highscore = str(get_standings()[0][3]).rjust(6, '0')
+            except:
+                highscore = '000000'
+            return render_template('index.html', highscore=highscore)
+        elif page.auth_required and authed() is False:
+            return redirect(url_for('auth.login', next=request.full_path))
 
         return render_template("page.html", content=markdown(page.content))
 

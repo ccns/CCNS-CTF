@@ -78,7 +78,7 @@
 					</li>
 				</ul>
 
-				<hr class="d-sm-flex d-md-flex d-lg-none">
+          <hr class="d-sm-flex d-md-flex d-lg-none">
 
 				<ul class="navbar-nav ml-md-auto d-block d-sm-flex d-md-flex">
 					{% if name is defined %}
@@ -177,18 +177,21 @@
 		</div>
 	</nav>
 
-	<main role="main">
-		{% block content %}
-		{% endblock %}
-	</main>
+    <main role="main">
+      {% block content %}
+      {% endblock %}
+    </main>
 
-	<footer class="footer">
-		<div class="container text-center">
-			<a href="https://ctfd.io" class="text-secondary">
-				<small class="text-muted">Powered by CTFd</small>
-			</a>
-		</div>
-	</footer>
+    <footer class="footer">
+      <div class="container text-center">
+        <a href="https://ctfd.io">
+          <small class="text-muted">Powered by CTFd</small>
+        </a>
+        <a href="https://www.facebook.com/ncku.ccns">
+          <small class="text-muted"> && CCNS</small>
+        </a>
+      </div>
+    </footer>
 
 	<script defer src="{{ url_for('views.themes', path='js/vendor.bundle.js') }}"></script>
 	<script defer src="{{ url_for('views.themes', path='js/core.js') }}"></script>
@@ -201,14 +204,14 @@
 	{% block scripts %}
 	{% endblock %}
 
-	{% for script in get_registered_scripts() %}
-	{% if script.startswith('http') %}
-	<script defer src="{{ script }}"></script>
-	{% elif request.script_root %}
-	<script defer src="{{ request.script_root }}/{{ script }}"></script>
-	{% else %}
-	<script defer src="{{ script }}"></script>
-	{% endif %}
-	{% endfor %}
-</body>
+    {% for script in get_registered_scripts() %}
+      {% if script.startswith('http') %}
+        <script src="{{ script }}"></script>
+      {% elif request.script_root %}
+        <script src="{{ request.script_root }}/{{ script }}"></script>
+      {% else %}
+        <script src="{{ script }}"></script>
+      {% endif %}
+    {% endfor %}
+  </body>
 </html>
