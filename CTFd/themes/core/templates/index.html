@@ -1,0 +1,252 @@
+{% extends "base.html" %}
+
+{% block stylesheets %}
+  <style>
+
+    /* Main styles */
+  @import url(https://fonts.googleapis.com/css?family=Open+Sans:800);
+
+  body {
+    overflow: hidden;
+    font-family: Open Sans;
+    background-image: url("themes/core/static/img/lakitu.gif"), url("themes/core/static/img/turtle_shell.gif"), url("themes/core/static/img/mario.gif"), url("themes/core/static/img/ground.png"), url("themes/core/static/img/bushes.png"), url("themes/core/static/img/back.png");
+    //      background-color: #F8E0B0;
+    background-color: #012630;
+    background-repeat: no-repeat, no-repeat, no-repeat, repeat-x, repeat-x, repeat-x;
+    background-position: left 110% bottom 198px, left 110% bottom 24px, left 30% bottom 22px, left 0px bottom 0px, left 0px bottom 24px, left 0px bottom 0px;
+    -webkit-animation: back 15s infinite linear;
+    animation: back 15s infinite linear;
+  }
+
+  @-webkit-keyframes back {
+    0% {
+      background-position: left 110% bottom 258px, left 110% bottom 24px, left 30% bottom 22px, left 0px bottom 0px, left 0px bottom 24px, left 0px bottom 0px;
+    }
+    30% {
+      background-position: left 95% bottom 268px, left 62% bottom 24px, left 42% bottom 22px, left -489.6px bottom 0px, left -304.8px bottom 24px, left -153.6px bottom 0px;
+    }
+    38% {
+      background-position: left 89% bottom 255px, left 49.2% bottom 24px, left 45.2% bottom 22px, left -620.16px bottom 0px, left -386.08px bottom 24px, left -194.56px bottom 0px;
+    }
+    39% {
+      background-position: left 88% bottom 257px, left 47.6% bottom 24px, left 45.6% bottom 54px, left -636.48px bottom 0px, left -396.24px bottom 24px, left -199.68px bottom 0px;
+    }
+    40% {
+      background-position: left 88.1% bottom 256px, left 46% bottom 24px, left 46% bottom 70px, left -652.8px bottom 0px, left -406.4px bottom 24px, left -204.8px bottom 0px;
+    }
+    41% {
+      background-position: left 87.9% bottom 256.5px, left 44.4% bottom 24px, left 46.4% bottom 54px, left -669.12px bottom 0px, left -416.56px bottom 24px, left -209.92px bottom 0px;
+    }
+    42% {
+      background-position: left 88% bottom 255.5px, left 42.8% bottom 24px, left 46.8% bottom 22px, left -685.44px bottom 0px, left -426.72px bottom 24px, left -215.04px bottom 0px;
+    }
+    50% {
+      background-position: left 92% bottom 247px, left 30% bottom 24px, left 50% bottom 22px, left -816px bottom 0px, left -508px bottom 24px, left -256px bottom 0px;
+    }
+    100% {
+      background-position: left 110% bottom 279px, left -50% bottom 24px, left 30% bottom 22px, left -1632px bottom 0px, left -1016px bottom 24px, left -512px bottom 0px;
+    }
+  }
+
+  @keyframes back {
+    0% {
+      background-position: left 110% bottom 258px, left 110% bottom 24px, left 30% bottom 22px, left 0px bottom 0px, left 0px bottom 24px, left 0px bottom 0px;
+    }
+    30% {
+      background-position: left 95% bottom 268px, left 62% bottom 24px, left 42% bottom 22px, left -489.6px bottom 0px, left -304.8px bottom 24px, left -153.6px bottom 0px;
+    }
+    38% {
+      background-position: left 89% bottom 255px, left 49.2% bottom 24px, left 45.2% bottom 22px, left -620.16px bottom 0px, left -386.08px bottom 24px, left -194.56px bottom 0px;
+    }
+    39% {
+      background-position: left 88% bottom 257px, left 47.6% bottom 24px, left 45.6% bottom 54px, left -636.48px bottom 0px, left -396.24px bottom 24px, left -199.68px bottom 0px;
+    }
+    40% {
+      background-position: left 88.1% bottom 256px, left 46% bottom 24px, left 46% bottom 70px, left -652.8px bottom 0px, left -406.4px bottom 24px, left -204.8px bottom 0px;
+    }
+    41% {
+      background-position: left 87.9% bottom 256.5px, left 44.4% bottom 24px, left 46.4% bottom 54px, left -669.12px bottom 0px, left -416.56px bottom 24px, left -209.92px bottom 0px;
+    }
+    42% {
+      background-position: left 88% bottom 255.5px, left 42.8% bottom 24px, left 46.8% bottom 22px, left -685.44px bottom 0px, left -426.72px bottom 24px, left -215.04px bottom 0px;
+    }
+    50% {
+      background-position: left 92% bottom 247px, left 30% bottom 24px, left 50% bottom 22px, left -816px bottom 0px, left -508px bottom 24px, left -256px bottom 0px;
+    }
+    100% {
+      background-position: left 110% bottom 279px, left -50% bottom 24px, left 30% bottom 22px, left -1632px bottom 0px, left -1016px bottom 24px, left -512px bottom 0px;
+    }
+  }
+
+
+  .text {
+    fill: none;
+    font: 5em/1 Open Sans, Impact;
+    stroke-width: 4;
+    stroke-linejoin: round;
+    stroke-dasharray: 35 165;
+    stroke-dashoffset: 0;
+    -webkit-animation: stroke 6s infinite linear;
+    animation: stroke 6s infinite linear;
+  }
+
+  .text:nth-child(5n + 1) {
+    stroke: #F2385A;
+    -webkit-animation-delay: -1.2s;
+    animation-delay: -1.2s;
+  }
+  .text:nth-child(5n + 2) {
+    stroke: #F5A503;
+    -webkit-animation-delay: -2.4s;
+    animation-delay: -2.4s;
+  }
+
+  .text:nth-child(5n + 3) {
+    stroke: #E9F1DF;
+    -webkit-animation-delay: -3.6s;
+    animation-delay: -3.6s;
+  }
+
+  .text:nth-child(5n + 4) {
+    stroke: #56D9CD;
+    -webkit-animation-delay: -4.8s;
+    animation-delay: -4.8s;
+  }
+
+  .text:nth-child(5n + 5) {
+    stroke: #3AA1BF;
+    -webkit-animation-delay: -6s;
+    animation-delay: -6s;
+  }
+
+  @-webkit-keyframes stroke {
+    100% {
+      stroke-dashoffset: -200;
+    }
+  }
+
+  @keyframes stroke {
+    100% {
+      stroke-dashoffset: -200;
+    }
+  }
+  /*
+  html, body {
+  height: 100%;
+  }
+
+  body {
+  background: #111;
+  background-size: .2em 100%;
+  text-transform: uppercase;
+  margin: 0;
+  }
+   */
+
+svg {
+  width: 100%;
+  height: 100%;
+}
+
+#mario-play-option {
+  color: #CCC;
+  font-size: 280%;
+  text-align: center;
+  font-family: VT323;
+  line-height: 1em;
+  text-transform: uppercase;
+
+  position: relative;
+  bottom: 2.2em;
+}
+#mario-play-option a {
+  color: inherit;
+  position: relative;
+}
+#mario-play-option a:hover, #mario-play-option a.mushroom {
+  color: #FFF;
+  text-decoration: none;
+}
+#mario-play-option a:active {
+  color: #999;
+  border: none;
+  outline: 0;
+}
+.mushroom:before {
+  content: url("themes/core/static/img/green_mushroom.png");
+  position: absolute;
+  left: -3.5ex;
+  opacity: 0.78;
+}
+#player-2 {
+  cursor: not-allowed;
+}
+</style>
+
+<link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
+
+{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <svg viewBox="0 0 500 280">
+
+        <!-- Symbol -->
+        <symbol id="s-text">
+          <text text-anchor="middle"
+            x="50%" y="50%" dy=".35em">
+            CCNS CTF
+          </text>
+        </symbol>
+
+        <!-- Duplicate symbols -->
+        <use xlink:href="#s-text" class="text"
+        ></use>
+        <use xlink:href="#s-text" class="text"
+        ></use>
+        <use xlink:href="#s-text" class="text"
+        ></use>
+        <use xlink:href="#s-text" class="text"
+        ></use>
+        <use xlink:href="#s-text" class="text"
+        ></use>
+
+      </svg>
+    </div>
+    <div id="mario-play-option" class="col-md-6 offset-md-3">
+      <div><a class="mushroom" id="player-1" href="login">1 player game</a></div>
+      <div><a id="player-2">2 player game</a></div>
+      <div>top- {{ highscore }}</div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+  <script>
+    window.addEventListener("keydown", function (event) {
+      const play1 = document.querySelector('#player-1');
+      const play2 = document.querySelector('#player-2');
+      if (event.defaultPrevented) {
+        return; // Do nothing if the event was already processed
+      }
+
+      switch (event.key) {
+        case "ArrowUp":
+          play1.classList.add('mushroom')
+          play2.classList.remove('mushroom')
+          break;
+        case "ArrowDown":
+          play2.classList.add('mushroom')
+          play1.classList.remove('mushroom')
+          break;
+        case "Enter":
+          if (play1.classList.contains('mushroom')) play1.click();
+          break;
+        default:
+          return; // Quit when this doesn't handle the key event.
+      }
+      event.preventDefault();
+    }, true);
+  </script>
+{% endblock %}

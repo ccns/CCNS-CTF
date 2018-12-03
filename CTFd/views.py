@@ -1,7 +1,7 @@
 from flask import current_app as app, render_template, request, redirect, abort, url_for, session, Blueprint, Response, send_file
 from flask.helpers import safe_join
 
-from CTFd.models import db, Users, Admins, Teams, Files, Pages, Notifications
+from CTFd.models import db, Users, Admins, Teams, Files, Pages, Notifications, Solves, Awards, Challenges
 from CTFd.utils import markdown
 from CTFd.cache import cache
 from CTFd.utils import get_config, set_config
@@ -16,6 +16,7 @@ from CTFd.utils import user as current_user
 from CTFd.utils.dates import ctftime
 from CTFd.utils.decorators import authed_only
 from CTFd.utils.security.signing import unserialize, BadTimeSignature, SignatureExpired, BadSignature
+from CTFd.utils.scores import get_standings
 from sqlalchemy.exc import IntegrityError
 import os
 
@@ -53,7 +54,8 @@ def setup():
 
             # Index page
 
-            index = """<div class="row">
+            index = """
+<div class="row">
     <div class="col-md-6 offset-md-3">
         <img class="w-100 mx-auto d-block" style="max-width: 500px;padding: 50px;padding-top: 14vh;" src="themes/core/static/img/logo.png" />
         <h3 class="text-center">
@@ -68,7 +70,8 @@ def setup():
             <a href="admin">Click here</a> to login and setup your CTF
         </h4>
     </div>
-</div>""".format(request.script_root)
+</div>
+            """.format(request.script_root)
 
             page = Pages(
                 title=None,
@@ -174,8 +177,14 @@ def static_html(route):
     if page is None:
         abort(404)
     else:
-        if page.auth_required and authed() is False:
-            return redirect(url_for('auth.login', next=request.full_path))
+        if route == 'index':
+            try:
+                highscore = str(get_standings()[0][3]).rjust(6, '0')
+            except:
+                highscore = '000000'
+            return render_template('index.html', highscore=highscore)
+        elif page.auth_required and utils.authed() is False:
+            return redirect(url_for('auth.login', next=request.path))
 
         return render_template('page.html', content=markdown(page.content))
 

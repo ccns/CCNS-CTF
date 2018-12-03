@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block stylesheets %}
+{% endblock %}
+
+{% block content %}
+  <div class="jumbotron">
+    <div class="container">
+      <h1>FAQ</h1>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-auto">
+        {% for error in errors %}
+          <div class="alert alert-danger alert-dismissable" role="alert">
+            <span class="sr-only">Error:</span>
+            {{ error }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+          </div>
+        {% endfor %}
+        <h4 id="-">緣起</h4>
+        <pre><code>  近年來資訊意識的興起，造就了全世界對於資訊安全的重視，即使並非從事資訊安全的相關人士，
+  也應該對於資安有相當的認識，我們希望透過這個小小活動使大家對資安能多一點認識。</code></pre>
+
+        <h4 id="-ctf">什麼是 CTF</h4>
+        <pre><code>  <span class="hljs-attribute">CTF</span> 是一種資安競賽，將資安概念跟工具使用的方法包裝成題目，
+  參賽者要從題目中找出 Flag，這對於初接觸資安領域的人算是不錯的練習，
+  題型大約可以分為幾類: Pwnable, Web, Crypto, Stego, Forensic, Misc </code></pre>
+
+        <h4>Flag 格式</h4>
+          <pre><code>  CCNS{strings_written_in_l33t}</code></pre>
+
+        <h4>期初社大 & 小獎品</h4>
+        <pre><code>  本學期的期初社大預計在3/22 or 3/23舉辦，
+  會有簡短的社團簡介並且備有許多小點心，歡迎來聊天吃吃喝喝喔:)
+  還有只要能在3/22 or 3/23的社大之前維持前三名，
+  就可以在社大上拿到神祕獎品喔！ </pre></code>
+
+        <h4>提醒</h4>
+        <pre><code>  為維護所有玩家的權益，請勿以任意方式惡意攻擊題目所在之伺服器，
+  並請不要以 Bruteforce 方式提交 Flag，謝謝各位的配合。 </pre></code>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
